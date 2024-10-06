@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychology Group 2</title>
+    <link rel="stylesheet" href="/css/psychology.css">
+</head>
+<body>
+    <header>
+        <img src="/images/Cream Brown Bright Simple Minimalist Education Learning Psychology Presentation.png" alt="Header Image">
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'about')">Group Members</button>
+            <button class="tablinks" onclick="openCity(event, 'ClassicalConditioning')">Classical Conditioning</button>
+            <button class="tablinks" onclick="openCity(event, 'SocialLearning')">Social Learning</button>
+            <button class="tablinks" onclick="openCity(event, 'OperantConditioning')">Operant Conditioning</button>
+        </div>
+    </header>
+
+    <!-- Tab content -->
+    <div id="about" class="tabcontent">
+        <div class="members">
+            <img src="/images/group members.png" alt="Group Members" class="center-img" width="1250px">
+        </div>
+        <h1>ASSIGNMENT</h1>
+        <div class="task">
+            <img src="/images/assignment.PNG" alt="" class="center-img">
+        </div>
+    </div>
+
+    <div id="ClassicalConditioning" class="tabcontent">
+        <div class="classical">
+            <img src="/images/classical.png" alt="" class="center-img">
+        </div>
+        <h3>What Is Classical Conditioning?</h3>
+        <p>Classical conditioning, also called Pavlovian conditioning or respondent conditioning, is learning through association. This behavioral learning method was first studied in the late 19th century by Russian physiologist Ivan Pavlov.</p>
+        <h2>Pavlov's Dog Experiment</h2>
+        <p>In the 1890s, Pavlov was experimenting with dogs, ringing a bell whenever they were fed. Over time, the dogs learned to associate a neutral stimulus (bell ringing) with a positive one (food).</p>
+        <p>Pavlov also noticed that his dogs would often begin to salivate whenever they heard the footsteps of his assistant bringing them the food. This is called a conditioned response. Pavlov's experiment and its association between positive and neutral stimuli became the foundation of classical conditioning theory.</p>
+        <p>Eventually, Pavlov linked these behavioral associations to humans. He spent the remainder of his career studying the phenomenon.</p>
+        <div class="dog">
+           <img src="/images/dog.webp" alt="" class="center-img">
+        </div>
+        <video id="myVideo" width="1000" height="800" controls>
+            <source src="/images/InShot_20241006_033027604.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- Stop Video Button -->
+        <button id="stopButton">Stop Video</button>
+    </div>
+
+    <div id="SocialLearning" class="tabcontent">
+        <h3>Social Learning</h3>
+        <p> </p>
+    </div>
+
+    <div id="OperantConditioning" class="tabcontent">
+        <h3>Operant Conditioning</h3>
+        <p>This section explains the concept of Operant Conditioning.</p>
+    </div>
+
+    <script>
+        function openCity(evt, cityName) {
+            var tabcontent = document.getElementsByClassName("tabcontent");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            var tablinks = document.getElementsByClassName("tablinks");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the video element
+        var video = document.getElementById("myVideo");
+        
+        // Ensure the video element exists
+        if (video) { 
+            // Add a click event listener to the video to play/pause
+            video.addEventListener("click", function() {
+                if (video.paused) {
+                    video.play(); // Play the video if it's paused
+                } else {
+                    video.pause(); // Pause the video if it's playing
+                }
+            });
+            
+            // Get the stop button element
+            var stopButton = document.getElementById("stopButton");
+            // Add a click event listener to the stop button
+            stopButton.addEventListener("click", function() {
+                video.pause();           // Pause the video
+                video.currentTime = 0;   // Reset the video to the start
+            });
+
+            // Function to stop the video when navigating away from the page
+            function stopVideo() {
+                video.pause();           // Pause the video
+                video.currentTime = 0;   // Reset the video to the start
+            }
+
+            // Attach the stopVideo function to the beforeunload event
+            window.addEventListener("beforeunload", stopVideo);
+        }
+
+        // Automatically open the first tab (Group Members) when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".tablinks").click();
+        });
+    </script>
+</body>
+</html>
